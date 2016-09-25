@@ -11,6 +11,6 @@ function main() {
   var ctx = canvas.getContext('2d');
 
   // Draw a black rectangle
-  ctx.fillStyle = 'rgba(0, 0, 0, 1.0)'; // Set color to black
-  ctx.fillRect(120, 10, 150 * 1.5, 150);        // Fill a rectangle with the color
+  ctx.fillStyle = 'rgba(0, 0, 0, 1.0)';   // Set color to black
+  ctx.fillRect(120, 10, 150 * 1.5, 150);  // Fill a rectangle with the color
 }
