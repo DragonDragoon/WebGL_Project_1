@@ -52,7 +52,28 @@ function main() {
     ]),    // Triangle Strip
     new Float32Array([
       -0.8, -0.1,  -0.7, 0.1,  -0.6, -0.1,  -0.5, 0.1,  -0.4, -0.1,  -0.3, 0.1,  -0.2, -0.1
-    ])    // Line Strip
+    ]),    // Line Strip
+    new Float32Array([
+      -0.9, 0.95,  -0.8, 0.75,  -0.7, 0.95,  -0.6, 0.75,  -0.5, 0.95
+    ]),    // W
+    new Float32Array([
+      -0.4, 0.95,  -0.4, 0.75
+    ]),    // I
+    new Float32Array([
+      -0.3, 0.95,  -0.3, 0.75,  -0.2, 0.75
+    ]),    // L
+    new Float32Array([
+      -0.1, 0.95,  -0.1, 0.75,  0.0, 0.75
+    ]),    // L
+    new Float32Array([
+      0.1, 0.95, 0.1, 0.75
+    ]),    // I
+    new Float32Array([
+      0.2, 0.75, 0.3, 0.95, 0.4, 0.75, 0.35, 0.85, 0.25, 0.85
+    ]),    // A
+    new Float32Array([
+      0.5, 0.75, 0.6, 0.95, 0.7, 0.75, 0.8, 0.95, 0.9, 0.75
+    ])     // M
   ];
 
   var colors = [
@@ -60,7 +81,14 @@ function main() {
     new Float32Array([1.0, 0.0, 0.0, 1.0]),   // Triangle 2
     new Float32Array([0.0, 1.0, 0.0, 1.0]),   // Hexagon 1
     new Float32Array([1.0, 1.0, 1.0, 1.0]),   // Triangle Strip
-    new Float32Array([0.0, 0.0, 0.0, 1.0])    // Line Strip
+    new Float32Array([0.0, 0.0, 0.0, 1.0]),   // Line Strip
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // W
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // I
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // L
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // L
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // I
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // A
+    new Float32Array([1.0, 1.0, 1.0, 1.0])    // M
   ];
 
   var ns = [
@@ -68,7 +96,14 @@ function main() {
     3,  // Triangle 2
     6,  // Hexagon 1
     7,  // Triangle Strip
-    7, // Line Strip
+    7,  // Line Strip
+    5,  // W
+    2,  // I
+    3,  // L
+    3,  // L
+    2,  // I
+    5,  // A
+    5   // M
   ];
 
   var types = [
@@ -76,7 +111,14 @@ function main() {
     gl.TRIANGLES,       // Triangle 1
     gl.TRIANGLE_FAN,    // Hexagon 1
     gl.TRIANGLE_STRIP,  // Triangle Strip
-    gl.LINE_STRIP       // Line Strip
+    gl.LINE_STRIP,      // Line Strip
+    gl.LINE_STRIP,      // W
+    gl.LINE_STRIP,      // I
+    gl.LINE_STRIP,      // L
+    gl.LINE_STRIP,      // L
+    gl.LINE_STRIP,      // I
+    gl.LINE_STRIP,      // A
+    gl.LINE_STRIP       // M
   ];
 
   for (var i = 0; i < ns.length; i++) {
