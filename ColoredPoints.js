@@ -69,12 +69,30 @@ function click(ev, gl, canvas, a_Position, u_FragColor) {
   // Store the coordinates to g_points array
   g_points.push([x, y]);
   // Store the coordinates to g_points array
-  if (x >= 0.0 && y >= 0.0) {      // First quadrant
-    g_colors.push([1.0, 0.0, 0.0, 1.0]);  // Red
-  } else if (x < 0.0 && y < 0.0) { // Third quadrant
-    g_colors.push([0.0, 1.0, 0.0, 1.0]);  // Green
-  } else {                         // Others
-    g_colors.push([1.0, 1.0, 1.0, 1.0]);  // White
+  if (x >= 0.0 && y >= 0.0) {             // First quadrant
+    if (x >= y) {                           // 1/8
+      g_colors.push([1.0, 0.0, 0.0, 1.0]);    // Red
+    } else {                                // 2/8
+      g_colors.push([1.0, 1.0, 0.0, 1.0]);    // Yellow
+    }
+  } else if (x >= 0.0 && y < 0.0) {       // Second quadrant
+    if (x >= -y) {                           // 3/8
+      g_colors.push([0.0, 1.0, 0.0, 1.0]);    // Green
+    } else {                                // 4/8
+      g_colors.push([0.0, 1.0, 1.0, 1.0]);    // Cyan
+    }
+  } else if (x < 0.0 && y < 0.0) {        // Third quadrant
+    if (x >= y) {                           // 5/8
+      g_colors.push([0.0, 0.0, 1.0, 1.0]);    // Blue
+    } else {                                // 6/8
+      g_colors.push([1.0, 0.0, 1.0, 1.0]);    // Magenta
+    }
+  } else if (x < 0.0 && y >= 0.0) {       // Fourth quadrant
+    if (x >= -y) {                           // 7/8
+      g_colors.push([1.0, 1.0, 1.0, 1.0]);    // White
+    } else {                                // 8/8
+      g_colors.push([0.5, 0.5, 0.5, 1.0]);    // Gray
+    }
   }
 
   // Clear <canvas>
