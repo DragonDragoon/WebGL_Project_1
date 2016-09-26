@@ -28,7 +28,7 @@ function main() {
              [ 0.0, 0.0, 0.0, 1.0]];
              
    
-  var enableAlert = false;
+  var enableAlert = true;
   
   for (i=0;i<colors.length;i++)
   {
