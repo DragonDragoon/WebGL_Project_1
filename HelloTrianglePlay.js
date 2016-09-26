@@ -39,29 +39,56 @@ function main() {
 
   var vertices = [
     new Float32Array([
-      0.25, 0.75, -0.25, 0.25, 0.25, 0.25
-    ]), // Triangle 1
+      0.25, 0.75,  -0.25, 0.25,  0.25, 0.25
+    ]),   // Triangle 1
     new Float32Array([
-      -0.25, -0.75, -0.25, -0.25, 0.25, -0.25
-    ])  // Triangle 2
+      -0.25, -0.75,  -0.25, -0.25,  0.25, -0.25
+    ]),   // Triangle 2
+    new Float32Array([
+      0.5, 0.1,  0.3, 0.0,  0.3, -0.2,  0.5, -0.3,  0.7, -0.2,  0.7, 0.0
+    ]),    // Hexagon 1
+    new Float32Array([
+      -0.8, -0.1,  -0.7, 0.1,  -0.6, -0.1,  -0.5, 0.1,  -0.4, -0.1,  -0.3, 0.1,  -0.2, -0.1
+    ]),    // Triangle Strip
+    new Float32Array([
+      -0.8, -0.1,  -0.7, 0.1,  -0.6, -0.1,  -0.5, 0.1,  -0.4, -0.1,  -0.3, 0.1,  -0.2, -0.1
+    ])    // Line Strip
   ];
-  var n = 3; // The number of vertices
 
   var colors = [
     new Float32Array([0.0, 0.0, 1.0, 1.0]),   // Triangle 1
-    new Float32Array([1.0, 0.0, 0.0, 1.0])    // Triangle 2
+    new Float32Array([1.0, 0.0, 0.0, 1.0]),   // Triangle 2
+    new Float32Array([0.0, 1.0, 0.0, 1.0]),   // Hexagon 1
+    new Float32Array([1.0, 1.0, 1.0, 1.0]),   // Triangle Strip
+    new Float32Array([0.0, 0.0, 0.0, 1.0])    // Line Strip
   ];
 
-  for (var i = 0; i < vertices.length; i++) {
+  var ns = [
+    3,  // Triangle 1
+    3,  // Triangle 2
+    6,  // Hexagon 1
+    7,  // Triangle Strip
+    7, // Line Strip
+  ];
+
+  var types = [
+    gl.TRIANGLES,       // Triangle 1
+    gl.TRIANGLES,       // Triangle 1
+    gl.TRIANGLE_FAN,    // Hexagon 1
+    gl.TRIANGLE_STRIP,  // Triangle Strip
+    gl.LINE_STRIP       // Line Strip
+  ];
+
+  for (var i = 0; i < ns.length; i++) {
     // Write the positions of vertices to a vertex shader
-    var n_v = initVertexBuffers(gl, vertices[i], n, colors[i]);
+    var n_v = initVertexBuffers(gl, vertices[i], ns[i], colors[i]);
     if (n_v < 0) {
       console.log('Failed to set the positions of the vertices');
       return;
     }
 
-    // Draw the rectangle
-    gl.drawArrays(gl.TRIANGLES, 0, n_v);
+    // Draw the polygon
+    gl.drawArrays(types[i], 0, n_v);
   }
 }
 
